@@ -6,6 +6,7 @@ class PathDB{
 		List<String> banglore = new ArrayList<String>();
 		banglore.add("Singapore");
 		List<String> singapore = new ArrayList<String>();
+		singapore.add("Banglore");
 		singapore.add("Seoul");
 		singapore.add("Dubai");
 		List<String> beijing = new ArrayList<String>();
@@ -39,4 +40,25 @@ class Paths{
 			return true;
 		return false;
 	}
+
+	public static void main(String[] args)throws Exception{
+		try{
+			System.out.println(showResult(args[0],args[1]));
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
