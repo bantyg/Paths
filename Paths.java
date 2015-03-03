@@ -20,7 +20,7 @@ class PathDB{
 
 class Paths{
 	static Map<String,List<String>> data = PathDB.createDB();
-	public static boolean findFlight(String source){
+	public static boolean isCity(String source){
 		if(data.containsKey(source)){
 			return true;
 		}
@@ -30,10 +30,10 @@ class Paths{
 		return false;
 	}
 
-	public static boolean showResult(String src,String dest)throws Exception{
+	public static boolean hasFlight(String src,String dest)throws Exception{
 		String[] cities = {src, dest};
 		for(String city:cities){
-			if(!findFlight(city))
+			if(!isCity(city))
 				throw new Exception(city + " City not found");
 		}
 		if(data.get(src).contains(dest))
@@ -43,13 +43,12 @@ class Paths{
 
 	public static void main(String[] args)throws Exception{
 		try{
-			System.out.println(showResult(args[0],args[1]));
+			System.out.println(hasFlight(args[0],args[1]));
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
 	}
 }
-
 
 
 
