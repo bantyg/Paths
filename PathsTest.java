@@ -4,28 +4,28 @@ import static org.junit.Assert.*;
 public class PathsTest{
 	@Test
 	public void test_should_give_true_for_banglore_to_singapore()throws Exception{
-		assertEquals(true, Paths.hasFlight("Banglore","Singapore"));
+		assertEquals(true, TravelAgent.hasFlightAvailable("Banglore","Singapore"));
 	}
 	@Test
 	public void test_should_give_false_for_banglore_to_tokyo()throws Exception{
-		assertEquals(false, Paths.hasFlight("Banglore","Tokyo"));
+		assertEquals(false, TravelAgent.hasFlightAvailable("Banglore","Tokyo"));
 	}
 	@Test
 	public void test_should_give_true_for_singapore_to_seoul()throws Exception{
-		assertEquals(true,Paths.hasFlight("Singapore","Seoul"));
+		assertEquals(true,TravelAgent.hasFlightAvailable("Singapore","Seoul"));
 	}
 	@Test
 	public void test_should_give_true_for_singapore_to_dubai()throws Exception{
-		assertEquals(true,Paths.hasFlight("Singapore","Dubai"));
+		assertEquals(true,TravelAgent.hasFlightAvailable("Singapore","Dubai"));
 	}
 	@Test
 	public void test_should_give_false_for_singapore_to_beijing()throws Exception{
-		assertEquals(false, Paths.hasFlight("Singapore","Beijing"));
+		assertEquals(false, TravelAgent.hasFlightAvailable("Singapore","Beijing"));
 	}
 	@Test
 	public void test_should_give_noCity_for_singapore_to_lucknow()throws Exception{
 		try{
-			Paths.hasFlight("Singapore","Lucknow");
+			TravelAgent.hasFlightAvailable("Singapore","Lucknow");
 		}
 		catch(Exception e){
 			assertEquals("Lucknow City not found", e.getMessage());
@@ -34,10 +34,33 @@ public class PathsTest{
 	@Test
 	public void test_should_give_noCity_for_Lucknow_to_Bangalore(){
 		try{
-			Paths.hasFlight("Lucknow", "Bangalore");
+			TravelAgent.hasFlightAvailable("Lucknow", "Bangalore");
 		}
 		catch(Exception e){
 			assertEquals("Lucknow City not found", e.getMessage());
 		}	
 	}
+	@Test
+	public void TravelAgent_tells_that_their_any_path_btwn_Bangalore_to_Tokyo()throws Exception{
+		boolean predicate = TravelAgent.hasAnyFlightAvailable("Banglore","Tokyo");
+		assertEquals(true,predicate);
+	}
+	@Test
+	public void paths_tell_that_their_any_path_btwn_Tokyo_to__Bangalore()throws Exception{
+		boolean predicate = TravelAgent.hasAnyFlightAvailable("Tokyo","Banglore");
+		assertEquals(false,predicate);
+	}
+
+	@Test
+	public void paths_tell_that_their_any_path_From_Bangalore_to_Finland()throws Exception{
+		boolean predicate = TravelAgent.hasAnyFlightAvailable("Banglore","Finland");
+		assertEquals(true,predicate);
+	}
+
+	// @Test
+	// public void paths_tell_that_their_any_path_From_Finland_to_Bangalore()throws Exception{
+	// 	boolean predicate = TravelAgent.hasAnyFlightAvailable("Finland","Banglore");
+	// 	assertTrue(predicate);
+	// }
+
 }
