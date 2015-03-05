@@ -51,7 +51,7 @@ class TravelAgent{
 		String[] cities = {src,dest};
 		for(String city:cities){
 			if(!isCity(city))
-				throw new Exception(city+"is not found");
+				throw new Exception(city+" city not found");
 		}
 		if(data.get(src) == null){
 			System.out.println("false");
@@ -75,6 +75,7 @@ class TravelAgent{
 
 class Paths{
 	public static void main(String[] args)throws Exception{
+		System.out.println(TravelAgent.data);
 		try{
 			TravelAgent.hasAnyFlightAvailable(args[0],args[1]);
 		}catch(Exception e){

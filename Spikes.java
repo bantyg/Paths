@@ -1,18 +1,25 @@
 import java.util.*;
+import java.io.*;
 class Path{
-	public static void main(String[] args) {
-		Map<String,String> m1 = new HashMap<String,String>();
-		m1.put("Banglore","Singapor");
-		m1.put("Chennai","Banglore");
-		m1.put("Tokio","Banglore");
-		// String data = m1.get("Banglore");
-		// System.out.println(data);()
-		if(m1.get("Banglore") == "Singapor")
-			System.out.println("hiiiiiiiiiiiiiii");
-		else
-			System.out.println("byeeeeeeeeeeeeeeeeee");
+	public static void main(String[] args)throws Exception{
+		try{
+			File file = new File(args[0]);
+		   	Map<String,List<String>> roots = new HashMap<String,List<String>>();
+			BufferedReader in = new BufferedReader(new FileReader(file));
+			String line ="";
+			while((line = in.readLine()) != null){
+				String[] cities = line.split(",");
+				List<String> aa = new ArrayList<String>();
+				for (int i=1;i<cities.length ;i++ ) {
+					aa.add(cities[i]);
+				}
+				roots.put(cities[0],aa);
+			}
+			System.out.println(roots);
+		}
+		catch(Exception e){
 
-
+		}
 	}
 }
 

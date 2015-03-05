@@ -57,10 +57,14 @@ public class PathsTest{
 		assertEquals(true,predicate);
 	}
 
-	// @Test
-	// public void paths_tell_that_their_any_path_From_Finland_to_Bangalore()throws Exception{
-	// 	boolean predicate = TravelAgent.hasAnyFlightAvailable("Finland","Banglore");
-	// 	assertTrue(predicate);
-	// }
+	@Test
+	public void paths_tell_that_their_any_path_From_Finland_to_Bangalore()throws Exception{
+		try{
+			boolean predicate = TravelAgent.hasAnyFlightAvailable("China","Banglore");
+		}catch(Exception e){
+
+			assertEquals("China city not found",e.getMessage());
+		}
+	}
 
 }
