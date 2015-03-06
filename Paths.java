@@ -68,11 +68,6 @@ class TravelAgent{
 				if (hasAnyFlightAvailable(citi,dest)==true)
 					return true;
  			}
-			if(data.get(src) == null){
-				String temp = src;
-				src = dest;
-				dest = temp;
-			}
 		}
 		return false;
 	}
