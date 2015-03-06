@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
-class Path{
 
+class PathReader{
 	public static Map<String,List<String>> readData(String option,String filee)throws Exception{
 		File file = new File(filee);
 	   	Map<String,List<String>> roots = new HashMap<String,List<String>>();
@@ -15,16 +15,14 @@ class Path{
 			}
 			roots.put(cities[0],aa);
 		}
-		System.out.println(roots);
 		return roots;
 	}
 	public static void main(String[] args)throws Exception{
 		try{
-
-			System.out.println("----------"+	readData(args[0],args[1]));
+			TravelAgent.data = readData(args[0],args[1]);
+			TravelAgent.hasAnyFlightAvailable(args[2],args[3]);
+		}catch(Exception e){
+			System.out.println("-----------"+e);
 		}
-		catch(Exception e){}
 	}
 }
-
-
