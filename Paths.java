@@ -47,22 +47,31 @@ class TravelAgent{
 		return false;
 	}
 
+	public static void throwException(String src,String city)throws Exception{
+		if(!isCity(city))
+				throw new Exception(city+" city not found");
+	}
+
+	public static boolean returnFalse(){
+		System.out.println("false");
+		return false;
+	}
+
+	public static boolean addToList(List<String> path,String src,String dest){
+		path.add(dest);
+		return true;
+	}
+
 	public static boolean hasAnyFlightAvailable(String src,String dest)throws Exception{
-		
 		String[] cities = {src,dest};
 		for(String city:cities){
-			if(!isCity(city))
-				throw new Exception(city+" city not found");
+			throwException(src,city);
 		}
-		if(data.get(src) == null){
-			System.out.println("false");
-			return false;	
-		}
-		if(path.contains(src) == false){path.add(src);}
-		if(data.get(src).contains(dest)){
-			path.add(dest);
-			return true;
-		}
+		if(data.get(src) == null)
+			returnFalse();	
+		if(path.contains(src) == false)path.add(src);
+		if(data.get(src).contains(dest))
+			addToList(path,src,dest);
 		for (String citi:data.get(src)) {
 			if(data.get(citi) != null ){
 				if (hasAnyFlightAvailable(citi,dest)==true)
