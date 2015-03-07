@@ -25,6 +25,7 @@ class PathDB{
 
 class TravelAgent{
 	public static Map<String,List<String>> data = PathDB.createDB();
+	public static List<List<String>> countries;
 	static List<String> path = new ArrayList<String>();
 	public static boolean isCity(String source){
 		if(data.containsKey(source)){
@@ -47,6 +48,11 @@ class TravelAgent{
 		return false;
 	}
 
+	public static void giveCountry(String city){
+		List<List<String>> all = Spikes.citiess;
+		System.out.println(all);
+	}
+
 	public static boolean isThereAnyFlightAvailable(String src,String dest)throws Exception{
 		String[] cities = {src,dest};
 		for(String city:cities){
@@ -60,7 +66,6 @@ class TravelAgent{
 		if(path.contains(src) == false){path.add(src);}
 		if(data.get(src).contains(dest)){
 			path.add(dest);
-			System.out.println(path);
 			return true;
 		}
 		for (String citi:data.get(src)) {
