@@ -20,9 +20,9 @@ class PathReader{
 	public static void main(String[] args)throws Exception{
 		try{
 			TravelAgent.data = readData(args[0],args[1]);
-			TravelAgent.hasAnyFlightAvailable(args[2],args[3]);
+			TravelAgent.isThereAnyFlightAvailable(args[2],args[3]);
 		}catch(Exception e){
-			System.out.println("-----------"+e);
+			System.out.println(e.getMessage());
 		}
 	}
 }

@@ -24,7 +24,7 @@ class PathDB{
 }
 
 class TravelAgent{
-	static Map<String,List<String>> data = PathDB.createDB();
+	public static Map<String,List<String>> data = PathDB.createDB();
 	static List<String> path = new ArrayList<String>();
 	public static boolean isCity(String source){
 		if(data.containsKey(source)){
@@ -47,62 +47,36 @@ class TravelAgent{
 		return false;
 	}
 
-	public static void throwException(String src,String city)throws Exception{
-		if(!isCity(city))
-				throw new Exception(city+" city not found");
-	}
-
-	public static boolean returnFalse(){
-		System.out.println("false");
-		return false;
-	}
-
-	public static boolean addToList(List<String> path,String src,String dest){
-		path.add(dest);
-		return true;
-	}
-
-	public static boolean hasAnyFlightAvailable(String src,String dest)throws Exception{
+	public static boolean isThereAnyFlightAvailable(String src,String dest)throws Exception{
 		String[] cities = {src,dest};
 		for(String city:cities){
-			throwException(src,city);
+			if(!isCity(city))
+				throw new Exception(city+" city not found");
 		}
-		if(data.get(src) == null)
-			returnFalse();	
-		if(path.contains(src) == false)path.add(src);
-		if(data.get(src).contains(dest))
-			addToList(path,src,dest);
+		if(data.get(src) == null){
+			System.out.println("false");
+			return false;	
+		}
+		if(path.contains(src) == false){path.add(src);}
+		if(data.get(src).contains(dest)){
+			path.add(dest);
+			System.out.println(path);
+			return true;
+		}
 		for (String citi:data.get(src)) {
 			if(data.get(citi) != null ){
-				if (hasAnyFlightAvailable(citi,dest)==true)
+				if (isThereAnyFlightAvailable(citi,dest)==true)
 					return true;
  			}
 		}
 		return false;
-	}
-
-	public static List<String> showReversePath(List<String> cities){
-		List<String> reverse = new ArrayList<String>();
-		int j = 0;
-		for (int i=cities.size()-1;i>=0;i--){
-			reverse.add(j,cities.get(i));
-			j++;
-		}
-		return reverse;
 	}
 }
 
 class Paths{
 	public static void main(String[] args)throws Exception{
 		try{
-			if(TravelAgent.data.get(args[0]) == null && TravelAgent.data.get(args[1]) != null){
-				TravelAgent.hasAnyFlightAvailable(args[0],args[1]);	
-				System.out.println(TravelAgent.showReversePath(TravelAgent.path)); 
-			}
-			else{
-				TravelAgent.hasAnyFlightAvailable(args[0],args[1]);
-				System.out.println(TravelAgent.path);
-			}
+			TravelAgent.isThereAnyFlightAvailable(args[0],args[1]);
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}

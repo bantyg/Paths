@@ -2,6 +2,9 @@ import org.junit.Test;
 import java.util.*;
 import static org.junit.Assert.*;
 public class PathsTest{
+	// PathDB db = new PathDB();
+	// TravelAgent.data = db.createDB();
+
 	@Test
 	public void test_should_give_true_for_banglore_to_singapore()throws Exception{
 		assertEquals(true, TravelAgent.hasFlightAvailable("Banglore","Singapore"));
@@ -42,25 +45,25 @@ public class PathsTest{
 	}
 	@Test
 	public void TravelAgent_tells_that_their_any_path_btwn_Bangalore_to_Tokyo()throws Exception{
-		boolean predicate = TravelAgent.hasAnyFlightAvailable("Banglore","Tokyo");
+		boolean predicate = TravelAgent.isThereAnyFlightAvailable("Banglore","Tokyo");
 		assertEquals(true,predicate);
 	}
 	@Test
 	public void paths_tell_that_their_any_path_btwn_Tokyo_to__Bangalore()throws Exception{
-		boolean predicate = TravelAgent.hasAnyFlightAvailable("Tokyo","Banglore");
+		boolean predicate = TravelAgent.isThereAnyFlightAvailable("Tokyo","Banglore");
 		assertEquals(false,predicate);
 	}
 
 	@Test
 	public void paths_tell_that_their_any_path_From_Bangalore_to_Finland()throws Exception{
-		boolean predicate = TravelAgent.hasAnyFlightAvailable("Banglore","Finland");
+		boolean predicate = TravelAgent.isThereAnyFlightAvailable("Banglore","Finland");
 		assertEquals(true,predicate);
 	}
 
 	@Test
 	public void paths_tell_that_their_any_path_From_Finland_to_Bangalore()throws Exception{
 		try{
-			boolean predicate = TravelAgent.hasAnyFlightAvailable("China","Banglore");
+			boolean predicate = TravelAgent.isThereAnyFlightAvailable("China","Banglore");
 		}catch(Exception e){
 
 			assertEquals("China city not found",e.getMessage());
