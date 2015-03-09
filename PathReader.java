@@ -19,7 +19,7 @@ class PathReader{
 	}
 
 	public static List<List<String>> readCities(String option,String filee)throws Exception{
-    	List<List<String>> citiess = new ArrayList<List<String>>();
+        List<List<String>> citiess = new ArrayList<List<String>>();
         File file = new File(filee);
         BufferedReader in = new BufferedReader(new FileReader(file));
         String line ="";
@@ -35,29 +35,29 @@ class PathReader{
     }
 
     public static List<String> addCountries(String cities,List<List<String>> countries){
-		String[] splitted = cities.split("->");
-    	List<String> output = new ArrayList<String>();
-		for (String city :splitted ) {
-			for (List<String> l :countries ) {
-				if(city.equals(l.get(0)) == true){
-					city = city+"["+l.get(1)+"]";
-					output.add(city);
-				}
-			}
-		}
-		return output;
+        String[] splitted = cities.split("->");
+        List<String> output = new ArrayList<String>();
+        for (String city :splitted ) {
+            for (List<String> l :countries ) {
+                if(city.equals(l.get(0)) == true){
+                    city = city+"["+l.get(1)+"]";
+                    output.add(city);
+                }
+            }
+        }
+        return output;
     }
 
-	public static void main(String[] args)throws Exception{
-		try{
-			List<List<String>> cityWithCountry = readCities(args[2],args[3]);
-			TravelAgent.data = readData(args[0],args[1]);
-			TravelAgent.isThereAnyFlightAvailable(args[4],args[5]);
-			List<String> pathList = addCountries(String.join("->",TravelAgent.path),cityWithCountry);
-			String path = String.join("->",pathList);
-			System.out.println(path);
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-		}
-	}
+	 public static void main(String[] args) {
+        try{
+            List<List<String>> cityWithCountry = PathReader.readCities(args[2], args[3]);
+            TravelAgent.data = PathReader.readData(args[0], args[1]);
+            TravelAgent.hasAnyFlightAvailable(args[4],args[5]);
+            List<String> pathList = PathReader.addCountries(String.join("->",TravelAgent.path),cityWithCountry);
+            String path = String.join("->",pathList);
+            System.out.println(path);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

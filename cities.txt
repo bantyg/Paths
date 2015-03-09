@@ -4,4 +4,5 @@ Beijing,China
 Seoul,south Koria
 Dubai,UAE
 Finland,Helsinki
+Tokyo,Japan
 
