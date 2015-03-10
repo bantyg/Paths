@@ -1,18 +1,12 @@
-package com.path;
+package path;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by poojag on 3/7/2015.
- */
+
 public class TravelAgent {
-    static Map<String,List<String>> data = PathDB.createDB();
+    public static Map<String,List<String>> data = PathDB.createDB();
     static List<String> path = new ArrayList<String>();
     public static boolean isCity(String source){
         if(data.containsKey(source)){
@@ -43,13 +37,11 @@ public class TravelAgent {
                 throw new Exception(city+" city not found");
         }
         if(data.get(src) == null){
-            System.out.println("false");
             return false;
         }
         if(!path.contains(src)){path.add(src);}
         if(data.get(src).contains(dest)){
             path.add(dest);
-            // System.out.println(path);
             return true;
         }
         for (String citi:data.get(src)) {

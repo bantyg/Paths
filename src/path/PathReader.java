@@ -1,8 +1,10 @@
+package path;
+
 import java.util.*;
 import java.io.*;
 
-class PathReader{
-	public static Map<String,List<String>> readData(String option,String f)throws Exception{
+public class PathReader{
+	public static Map<String,List<String>> readData(String f)throws Exception{
 		try{
 			File file = new File(f);
 		   	Map<String,List<String>> roots = new HashMap<String,List<String>>();
@@ -57,16 +59,5 @@ class PathReader{
         return output;
     }
 
-	 public static void main(String[] args) {
-        try{
-            List<List<String>> cityWithCountry = PathReader.readCities(args[2], args[3]);
-            TravelAgent.data = PathReader.readData(args[0], args[1]);
-            TravelAgent.isThereAnyFlightAvailable(args[4],args[5]);
-            List<String> pathList = PathReader.addCountries(String.join("->",TravelAgent.path),cityWithCountry);
-            String path = String.join("->",pathList);
-            System.out.println(path);
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
+
 }

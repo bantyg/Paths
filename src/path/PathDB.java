@@ -1,13 +1,11 @@
-package com.path;
+package path;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by poojag on 3/7/2015.
- */
+
 public class PathDB {
     public static Map<String,List<String>> createDB(){
         Map<String,List<String>> flights = new HashMap<String, List<String>>();
