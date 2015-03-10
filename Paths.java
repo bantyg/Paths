@@ -47,7 +47,7 @@ class TravelAgent{
 		return false;
 	}
 
-	public static boolean hasAnyFlightAvailable(String src,String dest)throws Exception{
+	public static boolean isThereAnyFlightAvailable(String src,String dest)throws Exception{
 		
 		String[] cities = {src,dest};
 		for(String city:cities){
@@ -66,7 +66,7 @@ class TravelAgent{
 		}
 		for (String citi:data.get(src)) {
 			if(data.get(citi) != null ){
-				if (hasAnyFlightAvailable(citi,dest)==true)
+				if (isThereAnyFlightAvailable(citi,dest)==true)
 					return true;
  			}
 		}
@@ -88,11 +88,11 @@ class Paths{
 	public static void main(String[] args)throws Exception{
 		try{
 			if(TravelAgent.data.get(args[0]) == null && TravelAgent.data.get(args[1]) != null){
-				TravelAgent.hasAnyFlightAvailable(args[0],args[1]);	
+				TravelAgent.isThereAnyFlightAvailable(args[0],args[1]);	
 				System.out.println(TravelAgent.showReversePath(TravelAgent.path)); 
 			}
 			else{
-				TravelAgent.hasAnyFlightAvailable(args[0],args[1]);
+				TravelAgent.isThereAnyFlightAvailable(args[0],args[1]);
 				System.out.println(TravelAgent.path);
 			}
 		}catch(Exception e){

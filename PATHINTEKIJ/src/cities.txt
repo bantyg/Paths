@@ -1,0 +1,8 @@
+Banglore,India
+Singapore,Singapore
+Beijing,China
+Seoul,south Koria
+Dubai,UAE
+Finland,Helsinki
+Tokyo,Japan
+
