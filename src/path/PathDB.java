@@ -7,7 +7,7 @@ import java.util.Map;
 
 
 public class PathDB {
-    public static Map<String,List<String>> createDB(){
+    public Map<String,List<String>> createDB(){
         Map<String,List<String>> flights = new HashMap<String, List<String>>();
         List<String> banglore = new ArrayList<String>();
         banglore.add("Singapore");

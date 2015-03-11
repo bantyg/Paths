@@ -61,7 +61,7 @@ class TravelAgent{
 		if(path.contains(src) == false){path.add(src);}
 		if(data.get(src).contains(dest)){
 			path.add(dest);
-			allPaths,add(path);
+			allPaths.add(path);
 			System.out.println(allPaths);
 			return true;
 		}

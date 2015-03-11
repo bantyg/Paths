@@ -1,18 +1,1 @@
-package path;
-
-import java.util.List;
-
-public class Main {
-    public static void main(String[] args) {
-        try{
-            List<List<String>> cityWithCountry = PathReader.readCities(args[2], args[3]);
-            TravelAgent.data = PathReader.readData( args[1]);
-            TravelAgent.isThereAnyFlightAvailable(args[4], args[5]);
-            List<String> pathList = PathReader.addCountries(String.join("->",TravelAgent.path),cityWithCountry);
-            String path = String.join("->",pathList);
-            System.out.println(path);
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-}
+package path;import java.util.ArrayList;import java.util.List;public class Main {    public static void main(String[] args) {        try{            List<String> route = new ArrayList<String>();            PathReader reader = new PathReader();            TravelAgent agent = new TravelAgent();            List<List<String>> cityWithCountry = reader.readCities(args[2], args[3]);            agent.data = reader.readData( args[1]);            agent.isThereAnyFlightAvailable(route,args[4], args[5]);            List<String> pathList = reader.addCountries(String.join("->",agent.path),cityWithCountry);            String path = String.join("->",pathList);            System.out.println(path);        }catch(Exception e){            System.out.println(e.getMessage());        }    }}

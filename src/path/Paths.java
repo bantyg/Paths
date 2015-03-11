@@ -1,17 +1,14 @@
 package path;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Paths {
     public static void main(String[] args)throws Exception{
         try{
-            if(TravelAgent.data.get(args[0]) == null && TravelAgent.data.get(args[1]) != null){
-                TravelAgent.isThereAnyFlightAvailable(args[0],args[1]);
-                System.out.println(TravelAgent.showReversePath(TravelAgent.path));
-            }
-            else{
-                TravelAgent.isThereAnyFlightAvailable(args[0],args[1]);
-                System.out.println(TravelAgent.path);
-            }
+            TravelAgent agent = new TravelAgent();
+                System.out.println(agent.hasFlightAvailable(args[0], args[1]));
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
