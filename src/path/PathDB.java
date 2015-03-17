@@ -9,8 +9,8 @@ import java.util.Map;
 public class PathDB {
     public Map<String,List<String>> createDB(){
         Map<String,List<String>> flights = new HashMap<String, List<String>>();
-        List<String> banglore = new ArrayList<String>();
-        banglore.add("Singapore");
+        List<String> bangalore = new ArrayList<String>();
+        bangalore.add("Singapore");
         List<String> singapore = new ArrayList<String>();
         singapore.add("Seoul");
         singapore.add("Dubai");
@@ -20,7 +20,7 @@ public class PathDB {
         seoul.add("Beijing");
         List<String> dubai = new ArrayList<String>();
         dubai.add("Finland");
-        flights.put("Banglore",banglore);
+        flights.put("Bangalore",bangalore);
         flights.put("Singapore",singapore);
         flights.put("Beijing",beijing);
         flights.put("Dubai",dubai);

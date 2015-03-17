@@ -1,4 +1,3 @@
-import com.sun.scenario.effect.impl.state.LinearConvolveRenderState;
 import org.junit.Test;
 import path.TravelAgent;
 
@@ -11,12 +10,12 @@ public class PathsTest{
 	@Test
 	public void test_should_give_true_for_banglore_to_singapore()throws Exception{
         TravelAgent agent = new TravelAgent();
-		assertEquals(true, agent.hasFlightAvailable("Banglore", "Singapore"));
+		assertEquals(true, agent.hasFlightAvailable("Bangalore", "Singapore"));
 	}
 	@Test
 	public void test_should_give_false_for_banglore_to_tokyo()throws Exception{
         TravelAgent agent = new TravelAgent();
-		assertEquals(false, agent.hasFlightAvailable("Banglore","Tokyo"));
+		assertEquals(false, agent.hasFlightAvailable("Bangalore","Tokyo"));
 	}
 	@Test
 	public void test_should_give_true_for_singapore_to_seoul()throws Exception{
@@ -33,6 +32,7 @@ public class PathsTest{
         TravelAgent agent = new TravelAgent();
 		assertEquals(false, agent.hasFlightAvailable("Singapore", "Beijing"));
 	}
+
 	@Test
 	public void test_should_give_noCity_for_singapore_to_lucknow()throws Exception{
         TravelAgent agent = new TravelAgent();
@@ -56,20 +56,20 @@ public class PathsTest{
 	@Test
 	public void TravelAgent_tells_that_their_any_path_btwn_Bangalore_to_Tokyo()throws Exception{
         TravelAgent agent = new TravelAgent();
-		boolean predicate = agent.isThereAnyFlightAvailable(path,"Banglore", "Tokyo");
+		boolean predicate = agent.isThereAnyFlightAvailable(path,"Bangalore", "Tokyo");
 		assertEquals(true,predicate);
 	}
 	@Test
 	public void paths_tell_that_their_any_path_btwn_Tokyo_to__Bangalore()throws Exception{
         TravelAgent agent = new TravelAgent();
-		boolean predicate = agent.isThereAnyFlightAvailable(path,"Tokyo", "Banglore");
+		boolean predicate = agent.isThereAnyFlightAvailable(path,"Tokyo", "Bangalore");
 		assertEquals(false,predicate);
 	}
 
 	@Test
 	public void paths_tell_that_their_any_path_From_Bangalore_to_Finland()throws Exception{
         TravelAgent agent = new TravelAgent();
-		boolean predicate = agent.isThereAnyFlightAvailable(path,"Banglore", "Finland");
+		boolean predicate = agent.isThereAnyFlightAvailable(path,"Bangalore", "Finland");
 		assertEquals(true,predicate);
 	}
 
@@ -77,7 +77,7 @@ public class PathsTest{
 	public void paths_tell_that_their_any_path_From_Finland_to_Bangalore()throws Exception{
         TravelAgent agent = new TravelAgent();
 		try{
-			boolean predicate = agent.isThereAnyFlightAvailable(path,"China", "Banglore");
+			agent.isThereAnyFlightAvailable(path,"China", "Bangalore");
 		}catch(Exception e){
 
 			assertEquals("China city not found",e.getMessage());

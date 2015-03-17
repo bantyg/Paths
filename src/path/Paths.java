@@ -1,9 +1,5 @@
 package path;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Paths {
     public static void main(String[] args)throws Exception{
         try{
