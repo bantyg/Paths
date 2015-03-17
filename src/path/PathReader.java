@@ -14,11 +14,14 @@ public class PathReader{
 				String[] places = line.split(",");
 				List<String> destinations = new ArrayList<String>();
 				for (int i=1;i<places.length ;i++ ) {
-					destinations.add(places[i]);
+                    destinations.add(places[i]);
 				}
-				roots.put(places[0],destinations);
+                if(roots.containsKey(places[0])){
+                    roots.get(places[0]).add(destinations.get(0));
+                }else
+                    roots.put(places[0],destinations);
 			}
-			return roots;
+            return roots;
 		}catch(Exception e){
 			throw new Exception("Error: "+f+" file not found");
 		}
